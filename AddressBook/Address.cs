@@ -4,66 +4,33 @@ using System.Text;
 
 namespace AddressBook
 {
-    class Address
+    public class Address
     {
-        string firstName;
-        string lastName;
-        string address;
-        string city;
-        string state;
-        string zip;
-        string phoneNumber;
-        string email;
-
-        public Address(string firstName, string lastName, string address, string city, string state, string zip, string phoneNumber, string email)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.state = state;
-            this.zip = zip;
-            this.phoneNumber = phoneNumber;
+        private String lname, city, state, phone, zip, email; //Declaring (Creating) Variables
+        public Address(String fname, String lname, String city, String state, String phone, String zip, string email)
+        {                                                   //constructor
+            this.FirstName = fname;
+            this.LastName = lname;
+            this.City = city;
+            this.State = state;
+            this.PhoneNo = phone;
+            this.ZipCode = zip;
             this.email = email;
         }
-        public string getName()
-        {
-            return this.firstName;
-        }
-        public string getlastName()
-        {
-            return this.lastName;
-        }
-        public string getaddress()
-        {
-            return this.address;
-        }
-        public string getcity()
-        {
-            return this.city;
-        }
-        public string getstate()
-        {
-            return this.state;
-        }
-        public string getzip()
-        {
-            return this.zip;
-        }
-        public string getphone()
-        {
-            return this.phoneNumber;
-        }
-        public string getemail()
-        {
-            return this.email;
-        }
-        public string Tostring()
-        {
-            return "First Name:" + firstName + "\nLast Name:" + lastName + "\nAddress:" + address + "\nState:" + state + "\nCity:" + city + "\nZip:" + zip + "\nPhoneNumber:" + phoneNumber;
-            // return "Name is:" + this.firstName +\n+ this.lastName+
-        }
 
+        public string FirstName { get; set; }        
+        public string LastName { get => lname; set => lname = value; }
+        public string City { get => city; set => city = value; }
+        public string State { get => state; set => state = value; }
+        public string PhoneNo { get => phone; set => phone = value; }
+        public string ZipCode { get => zip; set => zip = value; }
+        public string Email { get => email; set => email = value; }
+        public override string ToString() //Tostring  method store value
+        {
+            return "FirstName:- " + FirstName + "\nLastName:- " + LastName + " \nCity:- " + City
+                 + "\nState:- " + State + "\nZipCode:- " + ZipCode + "\nPhoneNo:- " + PhoneNo + "\nEmail:- " + email + " " + "\n";
+        }
     }
 }
-    
+  
+   

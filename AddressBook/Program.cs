@@ -6,17 +6,22 @@ namespace AddressBook
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("--Welcome to Address Book ---");
-            Address person = new Address("Shruthi", "Marri", "Hyderabad", "Hyderabad", "Telangana", "501505", "9123456789", "shruthimarri97@gmail.com");
-            Console.WriteLine(person.getName());
-            Console.WriteLine(person.getlastName());
-            Console.WriteLine(person.getaddress());
-            Console.WriteLine(person.getcity());
-            Console.WriteLine(person.getstate());
-            Console.WriteLine(person.getzip());
-            Console.WriteLine(person.getphone());
-            Console.WriteLine(person.getemail());
-            Console.Read();
+            Console.WriteLine("---- Welcome To AddressBook ----");
+
+            Console.Write("Enter First Name:- ");  // Take input 
+            string firstName = Console.ReadLine(); //Store input in firstName variable
+            Console.Write("Enter Last Name:- ");
+            string lastName = Console.ReadLine();
+            Console.Write("Enter City:- ");
+            string city = Console.ReadLine();
+            Console.Write("Enter State:- ");
+            string state = Console.ReadLine();
+            Console.Write("Enter Zip Code :- ");
+            string zip = Console.ReadLine();
+            Console.Write("Enter Phone Number:- ");
+            string pNumber = Console.ReadLine();
+            Console.Write("Enter Email:- ");
+            string Email = Console.ReadLine();
         }
     }
 }
