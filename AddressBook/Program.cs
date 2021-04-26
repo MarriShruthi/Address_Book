@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using System.Linq;
 
 namespace AddressBook
 {
@@ -6,7 +8,7 @@ namespace AddressBook
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("---- Welcome To AddressBook ----");
+            Console.WriteLine("******* Welcome To AddressBook *******");
 
             Console.Write("Enter First Name:- ");  // Take input 
             string firstName = Console.ReadLine(); //Store input in firstName variable

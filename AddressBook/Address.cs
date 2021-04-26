@@ -18,7 +18,8 @@ namespace AddressBook
             this.email = email;
         }
 
-        public string FirstName { get; set; }        
+        public string FirstName { get; set; }         // get method returns the value of the variable FirstName.
+                                                      // set method assigns a value to the name variable.
         public string LastName { get => lname; set => lname = value; }
         public string City { get => city; set => city = value; }
         public string State { get => state; set => state = value; }
@@ -27,10 +28,12 @@ namespace AddressBook
         public string Email { get => email; set => email = value; }
         public override string ToString() //Tostring  method store value
         {
-            return "FirstName:- " + FirstName + "\nLastName:- " + LastName + " \nCity:- " + City
+            return "FirstName:- " + FirstName + "\nLastName:- " + LastName +  " \nCity:- " + City
                  + "\nState:- " + State + "\nZipCode:- " + ZipCode + "\nPhoneNo:- " + PhoneNo + "\nEmail:- " + email + " " + "\n";
         }
     }
 }
-  
-   
+
+
+
+
