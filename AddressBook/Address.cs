@@ -6,81 +6,33 @@ namespace AddressBook
 {
     public class Address
     {
-		//Add Variables
-		public string FirstName;
-		public string LastName;
-		public string city;
-		public string state;
-		public string email;
-		public string phoneNumber;
-		//parameterized constructor for initializing instance member
-		public Address(string firstName, string lastName, string city, string state, string email, string phoneNumber)//Parameterized Constructor
-		{
-			//Instance Variables 
-			this.FirstName = firstName;
-			this.LastName = lastName;
-			this.city = city;
-			this.state = state;
-			this.email = email;
-			this.phoneNumber = phoneNumber;
-		}
-		public String getFirstName() /// get method returns the value of the variable FirstName.
-		{
-			return FirstName;
-		}
-
-		public void setFirstName(String firstName)  // set method assigns a value to the name variable.
-		{
-			this.FirstName = firstName;
-		}
-
-		public String getLastName() //get method returns the value of the variable LastName.
-		{
-			return LastName;
-		}
-
-		public void setLastName(String lastName) //set method assigns a value to the name variable.
-		{
-			this.LastName = lastName;
-		}
-
-		public String getCity()
-		{
-			return city;
-		}
-
-		public void setCity(String city)
-		{
-			this.city = city;
-		}
-
-		public String getState()
-		{
-			return state;
-		}
-
-		public void setState(String state)
-		{
-			this.state = state;
-		}
-		public String getPhoneNumber()
-		{
-			return phoneNumber;
-		}
-
-		public void setPhoneNumber(String phoneNumber)
-		{
-			this.phoneNumber = phoneNumber;
-		}
-
-		public String getEmail()
-		{
-			return email;
-		}
-
-		public void setEmail(String email)
-		{
-			this.email = email;
-		}
-	}
+        private String lname, city, state, phone, zip, email;
+        //Parameterised constructor
+        public Address(String fname, String lname,  String city, String state, String phone, String zip, string email)
+        {
+            //Instace Variables
+            this.FirstName = fname;
+            this.LastName = lname;
+            this.City = city;
+            this.State = state;
+            this.PhoneNo = phone;
+            this.ZipCode = zip;
+            this.email = email;
+        }
+        // get method returns the value of the variables.
+        // set method assigns a value to the variables.
+        public string FirstName { get; set; }
+        public string LastName { get => lname; set => lname = value; }
+        public string City { get => city; set => city = value; }
+        public string State { get => state; set => state = value; }
+        public string PhoneNo { get => phone; set => phone = value; }
+        public string ZipCode { get => zip; set => zip = value; }
+        public string Email { get => email; set => email = value; }
+        //Tostring  method storing value
+        public override string ToString()
+        {
+            return "FirstName:- " + FirstName + "\nLastName:- " + LastName +  " \nCity:- " + City
+                 + "\nState:- " + State + "\nZipCode:- " + ZipCode + "\nPhoneNo:- " + PhoneNo + "\nEmail:- " + email + " " + "\n";
+        }
+    }
 }
