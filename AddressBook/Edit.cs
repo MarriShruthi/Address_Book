@@ -21,7 +21,8 @@ namespace AddressBook
             contact.Email = email;
             people.Add(contact.FirstName, contact);
         }
-        public void ViewContact()
+        
+    public void ViewContact()
         {
             //all Tvalues in dictionary access by KeyValuePair Class
             foreach (KeyValuePair<string, Address> item in people) //print all values using foreach  in addressBook Dictionary
@@ -92,6 +93,18 @@ namespace AddressBook
                             break;
                     }
                 }
+            }
+        }
+        public void DeleteContact(string name)
+        {
+            if (people.ContainsKey(name))
+            {
+                people.Remove(name);
+                Console.WriteLine("\nDeleted Succesfully.\n");
+            }
+            else
+            {
+                Console.WriteLine("\nName you Entered  Not Found.\n");
             }
         }
     }
