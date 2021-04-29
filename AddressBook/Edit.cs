@@ -6,106 +6,89 @@ namespace AddressBook
 {
     class Edit 
     {
-        private Dictionary<string, Address> people = new Dictionary<string, Address>(); //create addressBook Dictionary
-
-        //method of interface
-        public void AddContact(string firstName, string lastName, string address, string city, string state, string email, string zip, string phoneNumber)
+        List<Address> adressBookList = new List<Address>(); //creating list
+        public void addPerson()
         {
-            Address contact = new Address(); // creating object of person class
-            contact.FirstName = firstName;
-            contact.LastName = lastName;
-            contact.City = city;
-            contact.State = state;
-            contact.Zip = zip;
-            contact.PhoneNumber = phoneNumber;
-            contact.Email = email;
-            people.Add(contact.FirstName, contact);
+            Console.WriteLine("Enter firstName:");//take input  user
+            string firstName = Console.ReadLine();//store input firstname variable
+            Console.WriteLine("Enter lastName:");//take input  user
+            string lastName = Console.ReadLine();//store input lastname variable
+            Console.WriteLine("Enter city:");//take input  user
+            string city = Console.ReadLine();//store input city variable
+            Console.WriteLine("Enter state:");//take input  user
+            string state = Console.ReadLine();//store input state variable
+            Console.WriteLine("Enter email:");//take input  user
+            string email = Console.ReadLine();//store input email variable
+            Console.WriteLine("Enter phoneNumber:");//take input  user
+            string phoneNumber = Console.ReadLine();//store input phonenumber variable
+            Address person = new Address(firstName, lastName, city, state, email, phoneNumber);
+            adressBookList.Add(person);   //adding list data person
         }
-        
-    public void ViewContact()
+        public void displayPerson()//body of displayperson interface method
         {
-            //all Tvalues in dictionary access by KeyValuePair Class
-            foreach (KeyValuePair<string, Address> item in people) //print all values using foreach  in addressBook Dictionary
+            Console.WriteLine("\nEntered Person Details is:");
+            foreach (var person in adressBookList)
             {
-                Console.WriteLine("First Name : " + item.Value.FirstName);
-                Console.WriteLine("Last Name : " + item.Value.LastName);
-                Console.WriteLine("City : " + item.Value.City);
-                Console.WriteLine("State : " + item.Value.State);
-                Console.WriteLine("Email : " + item.Value.Email);
-                Console.WriteLine("Zip : " + item.Value.Zip);
-                Console.WriteLine("Phone Number : " + item.Value.PhoneNumber + "\n");
-
+                Console.WriteLine("FirstName: {0}\t LastName: {1}\t city: {2}\t state: {3}\t email: {4}\t phoneNumber: {5}", person.FirstName, person.LastName, person.city, person.state, person.email, person.phoneNumber);
             }
         }
-
-        internal void AddContact(string firstName, string lastName, string city, string state, string email, string zip, string phoneNumber)
+        public void editPerson()//body of editperson interface method
         {
-            Address contact = new Address(); // creating object of person class
-            contact.FirstName = firstName;
-            contact.LastName = lastName;
-            contact.City = city;
-            contact.State = state;
-            contact.Zip = zip;
-            contact.PhoneNumber = phoneNumber;
-            contact.Email = email;
-            people.Add(contact.FirstName, contact);
-        }
-
-        public void EditContact(string name) //method in inteface pass argument name
-        {
-            foreach (KeyValuePair<string, Address> item in people) //use loop foreach
+            Console.WriteLine("\n enter First name to edit details:");//take input
+            string name = Console.ReadLine();//store input name variable
+            foreach (var person in adressBookList)
             {
-                if (item.Key.Equals(name))
+                if (name.Equals(person.FirstName))
                 {
-
-                    Console.WriteLine("Choose What to Edit \n 1. FirstName\n2. LastName\n3. city\n4. State\n5. Email\n6. Zip \n7. PhoneNumber\n");
-
-                    int choice = Convert.ToInt32(Console.ReadLine()); //convert string and store choice
+                    Console.WriteLine("Choose one of the following options: ");
+                    Console.WriteLine("#1 Phone Number");
+                    Console.WriteLine("#2 Email");
+                    Console.WriteLine("#3 City");
+                    Console.WriteLine("#4 State");
+                    Console.WriteLine("#5 Quit");
+                    int choice = Convert.ToInt32(Console.ReadLine()); //converting into int with the help of ToInt32()
                     switch (choice)
                     {
                         case 1:
-                            Console.WriteLine("Enter First Name :"); //take input
-                            item.Value.FirstName = Console.ReadLine(); //store firstName string in iten.value
+                            Console.WriteLine("enter new Mobile number:");
+                            string mobileNo = Console.ReadLine();
+                            person.setPhoneNumber(mobileNo);
+                            Console.WriteLine("mobile no. is updated\n");
                             break;
                         case 2:
-                            Console.WriteLine("Enter Last Name :");//take input
-                            item.Value.LastName = Console.ReadLine();//store last name in value
+                            Console.WriteLine("enter new Email-id:");
+                            String email = Console.ReadLine();
+                            person.setEmail(email);
+                            Console.WriteLine("Email-id is updated\n");
                             break;
                         case 3:
-                            Console.WriteLine("Enter City :");
-                            item.Value.City = Console.ReadLine();
+                            Console.WriteLine("enter your city");
+                            String city = Console.ReadLine();
+                            person.setCity(city);
                             break;
                         case 4:
-                            Console.WriteLine("Enter State :");
-                            item.Value.State = Console.ReadLine();
+                            Console.WriteLine("enter your state");
+                            String state = Console.ReadLine();
+                            person.setState(state);
+                            person.setState(state);
+                            Console.WriteLine("Address is updated\n");
                             break;
-                        case 5:
-                            Console.WriteLine("Enter Email :");
-                            item.Value.Email = Console.ReadLine();
-                            break;
-                        case 6:
-                            Console.WriteLine("Enter Zip :");
-                            item.Value.Zip = Console.ReadLine(); //convert string into int and store it
-                            break;
-                        case 7:
-                            Console.WriteLine("Enter Phone Number :");
-                            item.Value.PhoneNumber = Console.ReadLine();
+                        default:
+                            Console.WriteLine("please enter right choice");
                             break;
                     }
                 }
+                else
+                    Console.WriteLine("Person is not registered");
             }
         }
-        public void DeleteContact(string name)
+        public void deletePerson()//body of deleteperson interface method
         {
-            if (people.ContainsKey(name))
-            {
-                people.Remove(name);
-                Console.WriteLine("\nDeleted Succesfully.\n");
-            }
-            else
-            {
-                Console.WriteLine("\nName you Entered  Not Found.\n");
-            }
+            Console.WriteLine("Enter firstName of the user you want to remove");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Enter lastname of the user you want to remove");
+            string lastName = Console.ReadLine();
+            adressBookList.RemoveAll(item => item.FirstName == firstName && item.LastName == lastName);
         }
     }
 }

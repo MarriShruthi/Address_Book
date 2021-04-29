@@ -11,51 +11,38 @@ namespace AddressBook
             Console.WriteLine("******WelCome To Address Book******");
             Edit addressBook = new Edit();
 
-            Console.WriteLine("Enter First Name :");
-            string firstName = Console.ReadLine();
-            Console.WriteLine("Enter Last Name :");
-            string lastName = Console.ReadLine();
-            Console.WriteLine("Enter City :");
-            string city = Console.ReadLine();
-            Console.WriteLine("Enter State :");
-            string state = Console.ReadLine();
-            Console.WriteLine("Enter Email :");
-            string email = Console.ReadLine();
-            Console.WriteLine("Enter Zip :");
-            string zip = Console.ReadLine();
-            Console.WriteLine("Enter Phone Number :");
-            string phoneNumber = Console.ReadLine();
-            addressBook.AddContact(firstName, lastName, city, state, email, zip, phoneNumber);
-            //addressBook.ViewContact();//calling method
-            //addressBook.EditContact(firstName);
-            //addressBook.ViewContact();//calling method
-            //addressBook.DeleteContact(firstName);
-                Console.WriteLine("Enter your option");
-                int Choice = Convert.ToInt32(Console.ReadLine());
-                switch (Choice)
+            bool ProgramIsRunning = true;
+            while (ProgramIsRunning)
+            {
+                Console.WriteLine("Choose one of the following options: ");
+                Console.WriteLine("#1 Add new user");
+                Console.WriteLine("#2 Display user information");
+                Console.WriteLine("#3 Edit user information");
+                Console.WriteLine("#4 Delete existing user");
+                Console.WriteLine("#5 Exit");
+                int num = Convert.ToInt32(Console.ReadLine());//convert into int with the help of ToInt32()
+
+                switch (num)//using switch case
                 {
                     case 1:
-                        Console.WriteLine("Enter First Name Of Contact To Edit :");
-                        string nameToEdit = Console.ReadLine();
-                        addressBook.EditContact(nameToEdit);
+                        addressBook.addPerson();
                         break;
                     case 2:
-                        Console.WriteLine("Enter First Name Of Contact To Delete :");
-                        string nameToDelete = Console.ReadLine();
-                        addressBook.DeleteContact(nameToDelete);
+                        addressBook.displayPerson();
                         break;
                     case 3:
-                        Console.WriteLine("Enter First Name Of Contact To View :");
-                        string nameToView = Console.ReadLine();
-                        addressBook.ViewContact();
+                        addressBook.editPerson();
                         break;
-
                     case 4:
-                        Console.WriteLine("It is Not Found Any Information.");
+                        addressBook.deletePerson();
                         break;
-                }
-            }// while (Choice != 4);   
+                    case 5:
+                        ProgramIsRunning = false;
+                        break;
+                }//end switch case
+            }
         }
     }
+}
 
 
